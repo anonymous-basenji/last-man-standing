@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bafr3m51nh2p8"]
+
+[ext_resource type="Texture2D" uid="uid://bnecdx87l6mdf" path="res://art/enemyFlyingAlt_1.png" id="1_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://bv32ieguod0aw" path="res://art/enemyWalking_1.png" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://b6nhvxhte2sy6" path="res://mob.gd" id="1_wujgv"]
+[ext_resource type="Texture2D" uid="uid://nv0k7t24ub18" path="res://art/enemyWalking_2.png" id="2_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://dofq8q3nv7ril" path="res://art/enemyFlyingAlt_2.png" id="2_wujgv"]
+[ext_resource type="Texture2D" uid="uid://bs5sak44d73am" path="res://art/enemySwimming_1.png" id="3_hb8ge"]
+[ext_resource type="Texture2D" uid="uid://b1ayt25ss3y34" path="res://art/enemySwimming_2.png" id="4_e1ltt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwjut"]
+radius = 64.0
+height = 130.66667
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxqgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3yqyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wujgv")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hb8ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e1ltt")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4gyqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qi2p4")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[node name="Mob" type="RigidBody2D" unique_id=1943322867]
+position = Vector2(-3, -6)
+scale = Vector2(0.25, 0.25)
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_wujgv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316764823]
+position = Vector2(4.0000005, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_pwjut")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=16977471]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=978415791]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pxqgl")
+animation = &"walk"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="VisibleOnScreenNotifier2D" method="_on_screen_exited"]
