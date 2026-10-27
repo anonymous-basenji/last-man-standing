@@ -68,4 +68,4 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pxqgl")
 animation = &"walk"
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="VisibleOnScreenNotifier2D" method="_on_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
