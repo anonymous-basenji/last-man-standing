@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://chr51rwv37nmh"]
+
+[ext_resource type="Script" uid="uid://b5j813nsvpih0" path="res://enemy.gd" id="1_sg1si"]
+[ext_resource type="Texture2D" uid="uid://bv32ieguod0aw" path="res://art/enemyWalking_1.png" id="2_q3ed1"]
+[ext_resource type="Texture2D" uid="uid://nv0k7t24ub18" path="res://art/enemyWalking_2.png" id="3_6ipuc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88nhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q3ed1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6ipuc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="ArenaEnemy" type="Area2D" unique_id=660970287]
+script = ExtResource("1_sg1si")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1607161593]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_88nhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=145932067]

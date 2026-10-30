@@ -48,4 +48,8 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1970990031]
 shape = SubResource("CapsuleShape2D_pxqgl")
 
+[node name="ShootCooldown" type="Timer" parent="." unique_id=1271956460]
+
+[node name="InvulnTimer" type="Timer" parent="." unique_id=1361082588]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

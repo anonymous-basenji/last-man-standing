@@ -4,7 +4,9 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mob_scene = preload("res://arena_enemy.tscn")
 	$HUD.start_game.connect(new_game)
+	$Player.died.connect(game_over)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,20 +30,14 @@ func new_game():
 
 func _on_mob_timer_timeout() -> void:
 	var mob = mob_scene.instantiate()
-	
-	var mob_spawn_location = $MobPath/MobSpawnLocation
-	mob_spawn_location.progress_ratio = randf()
-	
-	mob.position = mob_spawn_location.position
-	var direction = mob_spawn_location.rotation + PI / 2
-	
-	direction += randf_range(-PI / 4, PI / 4)
-	mob.rotation = direction
-	
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	mob.linear_velocity = velocity.rotated(direction)
-	
+	$MobPath/MobSpawnLocation.progress_ratio = randf()
+	mob.position = $MobPath/MobSpawnLocation.global_position
+	mob.died.connect(_on_enemy_died)
 	add_child(mob)
+	
+func _on_enemy_died() -> void:
+	score += 5
+	$HUD.update_score(score)
 
 
 func _on_score_timer_timeout() -> void:

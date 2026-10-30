@@ -7,6 +7,8 @@ func _ready() -> void:
 	var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
 	$AnimatedSprite2D.animation = mob_types.pick_random()
 	$AnimatedSprite2D.play()
+	collision_layer = 2
+	collision_mask = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
