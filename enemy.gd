@@ -2,7 +2,7 @@ extends Area2D
 signal died
 
 @export var speed = 130
-var health = 3
+var health = 2
 var target: Node2D
 
 
@@ -10,7 +10,7 @@ var target: Node2D
 func _ready() -> void:
 	collision_layer = 2
 	collision_mask = 1
-	$AnimatedSprite2D.play("walk")
+	$AnimatedSprite2D.play("default")
 	
 	var circle = CircleShape2D.new()
 	circle.radius = 22

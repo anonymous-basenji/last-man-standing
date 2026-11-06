@@ -61,5 +61,13 @@ text = "Start"
 [node name="MessageTimer" type="Timer" parent="." unique_id=1685899659]
 wait_time = 2.0
 
+[node name="HealthLabel" type="Label" parent="." unique_id=740777115]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="BestLabel" type="Label" parent="." unique_id=1140105130]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
